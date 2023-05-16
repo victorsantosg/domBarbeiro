@@ -3,6 +3,7 @@ import './App.css'
 import Dashboard from './Components/Dashboard/Dashboard';
 import Login from './Components/Login/Login';
 import Register from './Components/Register/Register';
+import Agendamentos from './Components/Agendamentos/Agendamentos';
 
 // React-Router-Dom
 import {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
   {
     path: '/dashboard',
     element: <div><Dashboard /></div>
+  },
+  {
+    path: '/agendamentos',
+    element: <div><Agendamentos /></div>
   }
 ])
 

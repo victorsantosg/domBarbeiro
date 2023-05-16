@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Login.css'
 import '../../App.css'
 import { Link } from 'react-router-dom'
+import LoginAcess from '../../utils/LoginAcess'
 //import { supabase } from '../../supabaseClient'
 
 // Assets
@@ -19,7 +20,37 @@ import {BiArrowToRight} from 'react-icons/bi'
   })
 };*/
 
-const Login = () => {
+
+function Login() {
+
+  const [login, setLogin] = useState('');
+  const [senha, setSenha] = useState('');
+
+
+  function handleSubmit(event) {
+      event.preventDefault();
+      const data = {
+          login,
+          senha
+      }
+      if (data.login === LoginAcess.login && data.senha === LoginAcess.senha) {
+          alert(`Access Permitido! Seja bem vindo ` + LoginAcess.nome);
+          window.location.href = '/agendamentos';
+      } else {
+          alert("Access Negado, tente novamente ou crie outra conta")
+      }
+  }
+
+  function settarLogin(event) {
+      setLogin(event.target.value);
+    }
+
+  function settarSenha(event) {
+      setSenha(event.target.value);
+  }
+
+
+
   return (
     <div className='loginPage flex'>
     <div className='container flex'> 
@@ -53,7 +84,7 @@ const Login = () => {
             <label htmlFor='username'>Usuário</label>
             <div className="input flex">
               <FaUserShield className="icon" />
-              <input type='text' id='username' placeholder='Enter Username' />
+              <input type='email' id='email' placeholder='Enter Username'  value={login} onChange={settarLogin}/>
             </div> 
           </div>
 
@@ -62,11 +93,11 @@ const Login = () => {
             <label htmlFor='password'>Senha</label>
             <div className="input flex">
               <BsFillShieldLockFill className="icon" />
-              <input type='password' id='password' placeholder='Sua senha'/>
+              <input type='password' id='password' placeholder='Sua senha'  value={senha} onChange={settarSenha}/>
             </div> 
           </div>
 
-          <button type='submit' className='btn flex'>
+          <button type='submit' className='btn flex' onClick={handleSubmit}>
             <span>Login </span>
             <BiArrowToRight className="icon" />
           </button>
@@ -84,6 +115,6 @@ const Login = () => {
     </div>
     </div>
   )
+  
 }
-
 export default Login

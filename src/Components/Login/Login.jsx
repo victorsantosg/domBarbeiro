@@ -70,7 +70,6 @@ const Login = () => {
             <span>Login </span>
             <BiArrowToRight className="icon" />
           </button>
-          <button>Github</button>
 
           <span className='forgotPassword'>
             Esqueceu sua senha? <a href='/'>Clique aqui</a>

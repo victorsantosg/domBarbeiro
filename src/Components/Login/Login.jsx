@@ -74,7 +74,7 @@ function Login() {
 
       <div className="formDiv flex">
         <div className="headerDiv">
-          <img src={logo} alt="Logo IMG" />
+          <img src="/logo.jpeg" alt="Logo IMG" style={{ borderRadius: '50%', maxWidth: '80px' }} />
           <h3>Bem vindo de volta!</h3>
         </div>
 

@@ -1,6 +1,6 @@
 import axios from 'axios'; 
 
-const API_URL = 'http://localhost:3001/api';
+const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:3001/api' : '/api';
 
 export const getServices = () => axios.get(`${API_URL}/services`).then(res => res.data);
 export const getBarbers = () => axios.get(`${API_URL}/barbers`).then(res => res.data);

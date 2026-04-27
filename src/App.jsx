@@ -1,41 +1,36 @@
 import './App.css'
-// Import das páginas
 import Dashboard from './Components/Dashboard/Dashboard';
 import Login from './Components/Login/Login';
 import Register from './Components/Register/Register';
-import Agendamentos from './Components/Agendamentos/Agendamentos';
+import Booking from './Components/Booking/Booking';
 
-// React-Router-Dom
 import {
   createBrowserRouter,
   RouterProvider 
 } from 'react-router-dom'
 
-// Rotas de páginas
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <div><Login /></div>
+    element: <Booking />
+  },
+  {
+    path: '/login',
+    element: <Login />
   },
   {
     path: '/register',
-    element: <div><Register /></div>
+    element: <Register />
   },
   {
     path: '/dashboard',
-    element: <div><Dashboard /></div>
-  },
-  {
-    path: '/agendamentos',
-    element: <div><Agendamentos /></div>
+    element: <Dashboard />
   }
 ])
 
 function App() {
   return(
-    <div>
-      <RouterProvider  router={router}/>
-    </div>
+    <RouterProvider router={router}/>
   )
 }
 

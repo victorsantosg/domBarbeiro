@@ -1,1 +1,199 @@
-/*# sourceMappingURL=Dashboard.css.map */
+:root {
+  --sidebar-width: 260px;
+  --bg-main: #f8f9fa;
+  --bg-card: #ffffff;
+  --primary-accent: #000000;
+  --secondary-accent: #f4d03f;
+  --text-main: #2d3436;
+  --text-muted: #636e72;
+  --success: #00b894;
+  --pending: #fdcb6e;
+  --progress: #0984e3;
+  --border-radius: 12px;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.dashboard-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--bg-main);
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Sidebar Styling */
+.sidebar {
+  width: var(--sidebar-width);
+  background-color: #ffffff;
+  border-right: 1px solid #e1e1e1;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 0;
+  position: fixed;
+  height: 100vh;
+}
+
+.logo-div {
+  padding: 0 2rem;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.sidebar-logo {
+  max-width: 120px;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.nav-menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+.nav-menu li {
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.nav-menu li .icon {
+  font-size: 1.4rem;
+}
+
+.nav-menu li:hover, .nav-menu li.active {
+  color: var(--primary-accent);
+  background-color: #f1f1f1;
+  border-left: 4px solid var(--primary-accent);
+}
+
+/* Main Content Styling */
+.main-content {
+  margin-left: var(--sidebar-width);
+  flex: 1;
+  padding: 2rem;
+}
+
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.main-header h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+/* Stats Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.stat-card {
+  background: var(--bg-card);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stat-info p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.stat-info h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.stat-icon {
+  font-size: 2.5rem;
+  padding: 0.8rem;
+  border-radius: 50%;
+}
+
+.stat-icon.revenue { background-color: #e3fcef; color: var(--success); }
+.stat-icon.completed { background-color: #e3f2fd; color: var(--progress); }
+.stat-icon.pending { background-color: #fff9db; color: var(--pending); }
+.stat-icon.clients { background-color: #f3f0ff; color: #7950f2; }
+
+/* Queue Table */
+.queue-section {
+  background: var(--bg-card);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+}
+
+.queue-section h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+.appointment-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.appointment-table th {
+  text-align: left;
+  padding: 1rem;
+  border-bottom: 2px solid #f1f1f1;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.appointment-table td {
+  padding: 1.2rem 1rem;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.status-badge {
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.status-badge.scheduled { background: #fff9db; color: #f08c00; }
+.status-badge.in-progress { background: #e3f2fd; color: #1971c2; }
+.status-badge.completed { background: #e3fcef; color: #099268; }
+
+.btn-action {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: opacity 0.2s;
+}
+
+.btn-action.start { background-color: var(--primary-accent); color: white; }
+.btn-action.complete { background-color: var(--success); color: white; }
+
+.btn-action:hover {
+  opacity: 0.8;
+}
+
+@media (max-width: 992px) {
+  .sidebar { width: 80px; }
+  .logo-div h2, .nav-menu li span { display: none; }
+  .main-content { margin-left: 80px; }
+}

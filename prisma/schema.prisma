@@ -1,0 +1,70 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Service {
+  id               String        @id @default(uuid())
+  name             String
+  description      String?
+  price            Decimal       @db.Decimal(10, 2)
+  durationMinutes  Int           @default(30)
+  imageUrl         String?
+  createdAt        DateTime      @default(now())
+  appointments     Appointment[]
+
+  @@map("services")
+}
+
+model Product {
+  id            String   @id @default(uuid())
+  name          String
+  description   String?
+  price         Decimal  @db.Decimal(10, 2)
+  stockQuantity Int      @default(0)
+  imageUrl      String?
+  createdAt     DateTime @default(now())
+
+  @@map("products")
+}
+
+model Appointment {
+  id              String   @id @default(uuid())
+  clientName      String
+  clientPhone     String?
+  serviceId       String
+  service         Service  @relation(fields: [serviceId], references: [id])
+  barberId        String?
+  barber          Barber?  @relation(fields: [barberId], references: [id])
+  appointmentDate DateTime @db.Date
+  appointmentTime String   // Represented as HH:mm
+  status          String   @default("scheduled") // scheduled, in-progress, completed, cancelled
+  totalPrice      Decimal? @db.Decimal(10, 2)
+  createdAt       DateTime @default(now())
+
+  @@map("appointments")
+}
+
+model Barber {
+  id           String        @id @default(uuid())
+  name         String
+  imageUrl     String?
+  specialty    String?
+  appointments Appointment[]
+
+  @@map("barbers")
+}
+
+model Setting {
+  key       String   @id
+  value     Json
+  updatedAt DateTime @default(now())
+
+  @@map("settings")
+}
